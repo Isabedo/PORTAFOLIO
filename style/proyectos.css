@@ -1,0 +1,236 @@
+.bg{
+    background-color: var(--purple-dark);
+}
+.main-projects {
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.proyectos-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-tag {
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 0.5rem;
+}
+
+.projects-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--coral-dark);
+    margin-bottom: 0.5rem;
+}
+
+.section-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, var(--coral-dark), var(--coral));
+    margin: 0.8rem auto;
+}
+
+.projects-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Lista de cards */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 320px;
+    border: 1px solid rgba(124,58,237,0.2);
+    overflow: hidden;
+    transition: border-color 0.3s;
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 20px; height: 20px;
+    border-top: 1.5px solid var(--coral);
+    border-left: 1.5px solid var(--coral);
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-bottom: 1.5px solid var(--coral);
+    border-right: 1.5px solid var(--coral);
+}
+
+.project-card:hover {
+    border-color: var(--purple-light);
+}
+
+/* Imagen */
+.project-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.project-card:hover .project-img img {
+    transform: scale(1);
+}
+
+
+.project-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,5,20,0.4);
+    transition: background 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover .project-img::before {
+    background: rgba(10,5,20,0);
+}
+
+.project-tag {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    padding: 0.2rem 0.7rem;
+    background: var(--coral-dark);
+    border: 1px solid var(--coral);
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--text-tag);
+    font-family: 'Cinzel', serif;
+    z-index: 2;
+}
+
+/* Info del proyecto */
+.project-info {
+    padding: 2.5rem 2rem;
+    background: var(--purple-mid);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.project-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--coral);
+    letter-spacing: 0.2rem;
+}
+
+.project-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.project-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Tags de herramientas */
+.projects-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.projects-tags span {
+    padding: 0.2rem 0.7rem;
+    border: 1px solid var(--purple-light);
+    font-size: 0.8rem;
+    letter-spacing: 0.08rem;
+    color: var(--purple-light);
+    font-family: 'Cinzel', serif;
+}
+
+
+.project-card.inverted {
+    direction: rtl; 
+}
+
+.project-card.inverted .project-info {
+    direction: ltr; 
+}
+
+.project-card.inverted .project-img {
+    direction: ltr;
+}
+
+/* Card próximamente */
+.project-card.prox {
+    opacity: 0.45;
+    filter: grayscale(0.8);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.prox-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(45,17,84,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--purple-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15rem;
+}
+
+.prox-placeholder span {
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-main { padding: 6rem 1.5rem 3rem; }
+
+    .project-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: 220px auto;
+    }
+
+    .project-card.inverted {
+        direction: ltr;
+    }
+
+    .project-info { padding: 1.5rem; }
+}

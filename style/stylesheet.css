@@ -1,0 +1,900 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    text-decoration: none;
+}
+
+:root{
+    --purple-dark:#130927;
+    --purple-mid: #2d1154;
+    --purple-accent: #7c3aed;
+    --purple-light: #a78bfa;
+    --moon-silver: #c8b8e8;
+    --coral: #ff6b6b;
+    --coral-dark: #c30303;
+    --gold: #d4a843;
+    --text-light: #f0e8ff;
+    --text-muted: #9b8ab8;
+    --text-tag: #f0e8ff;
+    --icons:invert(100%) sepia(100%) grayscale(100%) brightness(200%);
+    --bg-card: rgba(26, 10, 46, 0.562);
+}
+
+
+.light-theme {
+    --purple-dark: #dbd2f7;       
+    --purple-mid: #b9a5f3;        
+    --purple-accent: #6d28d9;     
+    --purple-light: #5b21b6;      
+    --moon-silver: #f6f3ff;       
+    --coral: #6700c7;             
+    --coral-dark: #220036;       
+    --gold: #a07800;              
+    --text-light: #1a0a2e;       
+    --text-muted: #5c4d8a;        
+    --text-tag: #b9a5f3;         
+    --bg-main: #f5f2ff;           
+    --icons: invert(0%) sepia(100%) grayscale(0%) brightness(100%);
+    --bg-card: rgba(161, 130, 245, 0.212);
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    width: 100vw;
+    
+}
+/*juego integrado*/
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    position: relative;
+    width: 90vw;
+    max-width: 980px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--coral-dark);
+}
+
+.modal-contenido iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    display: block;
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--coral-dark);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-cerrar:hover {
+    background: var(--coral);
+}
+
+/*fin juego integrado*/
+.star {
+    position: absolute;
+    background:var(--text-light);
+    border-radius: 50%; 
+}
+
+.clock {
+    position: fixed;
+    bottom: 0rem; right: 0rem;
+    color: var(--text-light);
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid var(--purple-light);
+    background: var(--purple-mid);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    z-index: 2;
+}
+
+/*HEADER*/
+.site-header {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;        
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    background-color: var(--purple-dark);
+}
+
+.btn-primary {
+    padding: 0.7rem 2rem;
+    background: var(--coral-dark);
+    color: var(--moon-silver);
+    font-size: 1rem;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+
+    
+    clip-path: polygon(
+        12px 0%,              
+        calc(100% - 12px) 0%, 
+        100% 50%,             
+        calc(100% - 12px) 100%, 
+        12px 100%,            
+        0% 50%                
+    );
+}
+
+.btn-secondary {
+    width: 40px;
+    height: 50px;
+    background: var(--purple-accent);
+    
+    
+    clip-path: polygon(
+        0% 0%,      
+        15% 0%,      
+        85% 0%,      
+        100% 0%,    
+        100% 60%,    
+        50% 100%,    
+        0% 60%       
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color:var(--text-light);
+    font-size: 1rem;
+    margin-left: 2px;
+}
+
+.btn-secondary p {
+    padding-bottom: 10px;
+}
+
+.site-header button:hover{
+    color: var(--purple-dark);
+    cursor: pointer;
+}
+
+.site-header button:active{
+    color: var(--purple-dark);
+    transform: scale(0.95);
+}
+
+.logo {
+    font-size: 28px;
+    color: var(--purple-light);
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.site-nav a {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-left: 3rem;
+    font-weight: 10rem;
+    border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+    color: var(--purple-light);
+    border-bottom-color: var(--purple-light);
+}
+
+/*FIN HEADER*/
+
+/* Menú hamburguesa */
+.bt-menu-hamburguesa {
+    display: none; 
+}
+
+.bt-menu-hamburguesa p {
+    padding-bottom: 10px;
+}
+
+.menu-fullscreen {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--purple-dark);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.menu-fullscreen.abierto {
+    display: flex;
+}
+
+.menu-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.menu-close:hover {
+    color: var(--purple-light);
+    transform: rotate(90deg);
+}
+
+.menu-fullscreen-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu-link {
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    padding: 0.3rem 0;
+}
+
+.menu-link:hover {
+    color: var(--text-light);
+}
+
+.menu-fullscreen-bottom {
+    position: absolute;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu-fullscreen-bottom-options {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.menu-social {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.menu-social a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu-social a:hover {
+    color: var(--purple-light);
+}
+
+.icon{
+    width: 24px;
+    height: 24px;
+    filter:var(--icons) ;
+}
+/*FIN MENÚ HAMBURGUESA*/
+
+.section {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--purple-dark);
+    padding: 3REM;
+}
+
+/*INICIO*/
+
+.section--home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+}
+.cta{
+    display: none;
+}
+.glow-bg {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse,var(--purple-mid) 0%, transparent 70%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-frame {
+    position: relative;
+    background:var(--bg-card);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.frame-home {
+    padding: 3rem 3rem;
+    height: 35vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-frame::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 40px; height: 40px;
+  border-top: 2px solid var(--purple-accent);
+  border-left: 2px solid var(--purple-accent);
+}
+
+.hero-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 40px; height: 40px;
+  border-bottom: 2px solid var(--purple-accent);
+  border-right: 2px solid var(--purple-accent);
+}
+
+.frame-corner-tr {
+  position: absolute;
+  top: -1px; right: -1px;
+  width: 40px; height: 40px;
+  border-top: 2px solid var(--purple-accent);
+  border-right: 2px solid var(--purple-accent);
+}
+
+.frame-corner-bl {
+  position: absolute;
+  bottom: -1px; left: -1px;
+  width: 40px; height: 40px;
+  border-bottom: 2px solid var(--purple-accent);
+  border-left: 2px solid var(--purple-accent);
+}
+
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--purple-accent);
+  font-size: 0.7rem;
+}
+
+.ornament-divider::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(124,58,237,0.5));
+}
+
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to left, transparent, rgba(124,58,237,0.5));
+}
+
+
+.profile-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    
+}
+
+.profile-content h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.profile-content p {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    
+}
+
+/*FIN INICIO*/
+
+/*galery*/
+
+.projects_acces {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    object-fit: cover;
+}
+.glass-card {
+    background: rgba(220, 165, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.2px);
+    -webkit-backdrop-filter: blur(3.2px);
+    border: 1px solid rgba(220, 165, 255, 0.6);
+    
+}
+.galery-section {
+    display: flex;
+    width: 50%;
+}
+
+.galeria-item {
+    position: relative;
+    flex: 1; 
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.08);
+    transition: transform 0.5s ease;
+}
+
+
+.galeria-item:hover img {
+    transform: scale(1);
+}
+
+.galeria-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10, 5, 20, 0.5); 
+    transition: background 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+.galeria-item:hover::before {
+    background: rgba(10, 5, 20, 0); 
+}
+.galeria-item .label {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: var(--text-tag);
+    z-index: 2; 
+    transition: color 0.4s ease;
+}
+.galeria-item:hover .label {
+    color: var(--purple-light);
+}
+/*FIN GALERY*/
+/*servicios*/
+.list{
+    display: flex;
+    margin-left: 1rem;
+    flex-direction: column;
+}
+
+.profile-content-abilities-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.abilitie-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.5rem;
+    padding: 2rem;
+    width: 50%;
+    height: 450px;
+
+    
+}
+/*FIN SERVICIOS*/
+/*ABOUT*/
+
+.section--aboutme {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-light);
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+#map { 
+    height: 180px;
+    margin-top: 1rem;
+} 
+.profile-content-about{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem;
+    
+}
+
+.profile-content-info {
+    gap: 3rem;
+    max-height: 50%;
+    max-width: 40%;
+    padding: 3rem;
+    font-size: 1.2rem;
+}
+
+.section-abilitie {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem;
+    
+}
+
+.profile-content-abilities{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 3rem;
+}
+
+.abilities {
+    width: 60%;
+    padding: 2rem;
+}
+.abilitie-icon{
+    font-size: 2rem;
+    display: inline;
+}
+
+.abilitie-title {
+    display: inline;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+}
+.abilitie-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    text-transform: uppercase; 
+    letter-spacing: 0.5rem;
+    border-bottom: 3px solid var(--purple-light);
+    
+}
+
+/*FIN ABOUT*/
+
+/*FORM*/
+
+.form-container-general{
+    display: flex;
+    flex-direction: row;
+    color: var(--text-light);
+    align-items: center;
+    justify-content: space-around;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20rem;
+    
+}
+.form-info-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.form-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem;
+    border: 1px solid var(--purple-light);
+    border-radius: 16px;
+    
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 700px;
+}
+
+.line-label {
+    display: inline-flex;
+    width: 100%;
+    gap:25%;
+}
+
+.line-input {
+    display: inline-flex;
+    width: 100%;
+    gap: 1rem;
+}
+.form-container form label {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.form-container form input,
+.form-container form textarea {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--purple-accent);
+    background-color: var(--bg-card);
+    color: var(--text-light);
+}
+
+
+.error-msg {
+    color: #c00;
+    font-size: 12px;
+    display: none;
+    margin-top: 4px;
+}
+
+.con-error input,
+.con-error textarea {
+    border: 2px solid #c00;
+}
+
+.con-error .error-msg {
+    display: block;
+}
+
+.form-exito {
+    display: none;
+    color: #2e7d32;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+.con-error .error-msg {
+    display: block;
+}
+/*FIN FORM*/
+/*FOOTER*/
+.site-footer {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--purple-dark);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1rem;
+    border-top: 1px solid var(--purple-light);
+}
+
+.social{
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/*FIN FOOTER*/
+
+
+
+@media (max-width: 480px), (max-width: 1024px) {
+    .site-nav { display: none; }
+    .buttons { display: none; }
+    .bt-menu-hamburguesa { display: block; }
+    
+    .frame-home {
+        height: 50%;
+    }
+
+    .glow-bg {
+        width: 100%;
+        height: 300px;
+    }
+
+    .profile-content h1 {
+        font-size: 1.3rem;      
+    }
+
+    .profile-content h2 {
+        font-size: 0.9rem;
+    }
+
+    .profile-content p{
+        font-size: 1rem;
+    }
+
+    .section{
+        padding: 1.2rem;
+    }
+
+    .cta{
+        display: inline-block;
+        margin: 2rem;
+        color: var(--moon-silver);
+        font-size: 15px;
+        font-weight: 500;
+        
+    }
+
+    .galery-section {
+        display: flex;
+        width: 100%;
+        height: 45rem;
+    }
+
+    .projects_acces {
+        flex-direction: column;
+        width: 100%;
+        height: 45rem;
+        overflow: hidden;
+        object-fit: cover;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+    
+    .profile-content-about{
+        flex-direction: column;    
+        gap: 1rem;
+        align-items: center;
+        justify-content: center; 
+        margin: 2rem;
+    }
+
+    .profile-content-info {
+        max-width: 100%;
+        padding: 2rem;
+        font-size: 1rem;
+    }
+    
+    .abilities {
+        width: 100%;
+        padding: 1rem;
+    }
+    .abilitie-icon{
+        font-size: 1.5rem;
+    }
+
+    .abilitie-title {
+        font-size: 1rem;
+    }
+    .abilitie-description {
+        font-size: 1rem;
+    }
+    
+    .profile-content-abilities{
+        margin-left: 0rem;
+        display: flex;
+        gap: 0.5rem;
+        
+    }
+
+    .section-title {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        margin-top: 2rem;
+    }
+
+    .form-container-general{
+        flex-direction: column;
+    }
+
+    .form-info-container {
+       align-items: center;
+       justify-content: center;
+    }
+    .form-container {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .form-text {
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+    }
+
+   
+
+    .profile-content-abilities-2{
+        flex-direction: column;
+        
+    }
+    
+    .abilitie-2{
+        width: 100%;
+        height: auto;
+    }
+        
+    .form-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+        
+
+
+
+    
+}
+
+
+
+
