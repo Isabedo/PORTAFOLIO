@@ -86,13 +86,13 @@ for (let i = 0; i < 80; i++) {
 /*Lógica para cambio de tema y lenguaje*/
 if (temaGuardado === 'light') {
     document.body.classList.add('light-theme');
-    document.querySelectorAll('.change-theme').forEach(btn => {
+    buttonTheme.forEach(btn => {
         btn.querySelector('p').textContent = '☾';
     });
 }
 
 // Botón de tema
-document.querySelectorAll('.change-theme').forEach(btn => {
+buttonTheme.forEach(btn => {
     btn.addEventListener('click', () => {
         const esClaro = document.body.classList.toggle('light-theme');
 
@@ -122,52 +122,93 @@ buttonLenguage.forEach(btn => {
 
 const traducciones = {
     es: {
+        /*Menú y home*/
         home: "Inicio",
         projects: "Proyectos",
         about: "Sobre mí",
+        services: "Servicios",
+        play: "Jugar",
         contact: "Contáctame",
-        abilitie_home_1: "✦ PROGRAMADORA ✦",
-        abilitie_home_2: "Arte conceptual",
+        /*iinicio home*/
+        home_h1: "✦ PROGRAMADORA ✦",
+        home_h2: "Arte conceptual",
         desc_home: "Creo juegos e historias interactivas — programando la lógica, dibujando los personajes y animando los mundos que los hacen cobrar vida.",
-        desc_draws: "Personajes/ criaturas",
-        desc_programming: "Programación",
-        desc_animacion2d: "Animación 2D hecha en After Effects, con personajes y fondos totalmente originales",
-        desc_2d_: "Proyectos de animación 2D tanto universitarios como personales",
-        name_2d: "Todo lo que no dijimos",
-        desc_animacion3d: "Animación y modelado 3D",
-        desc_3D_: "Proyectos de animación y modelado 3D universitarios y personales",
         verMas: "Ver proyectos",
-        desc_about_me:"Soy estudiante de comunicación y entretenimiento digital de 5to semestre. Me apasiona el desarrollo de videojuegos y la creación de experiencias interactivas. Con habilidades en programación, arte conceptual y animación, me esfuerzo por crear historias que conecten con los jugadores a nivel emocional y a mejorar constantenemnte mis conocimientos. Estoy emocionada por seguir creciendo en esta industria y contribuir con mi creatividad y dedicación a proyectos innovadores.",
+        /*proyectos*/
+        art: "Arte",
+        programming: "Programación",
+        animation2d: "Animación 2D",
+        animation3d: "Animación y modelado 3D",
+        /*servicios*/
+        service_1:"Tengo conocimientos en Python, C#, HTML, CSS, JavaScript y motores gráficos como unity y Unreal Engine.", 
+        desc_service_1_1: "Desarrollo de mecánicas de juego.",
+        desc_service_1_2: "Optimización de código.",
+        desc_service_1_3: "Desarrollo de sitios y páginas web interactivas.",
+        service_2: "Diseño de entornos y personajes para videojuegos.",
+        desc_service_2_1: "Creación de personajes y criaturas originales.",
+        desc_service_2_2: "Diseño de escenarios y fondos para juegos.",
+        desc_service_2_3: "Ilustraciones.",
+        animation2D_3D: "Animación 2D y 3D",
+        desc_service_3_1: "Animación de personajes y objetos para juegos 2D.",
+        desc_service_3_2: "Creación de cinemáticas y secuencias animadas.",
+        desc_service_3_3: "Modelado y animación 3D",
+        /*about*/
+        desc_about:"Soy estudiante de comunicación y entretenimiento digital de 5to semestre. Me apasiona el desarrollo de videojuegos y la creación de experiencias interactivas. Con habilidades en programación, arte conceptual y animación, me esfuerzo por crear historias que conecten con los jugadores a nivel emocional y a mejorar constantenemnte mis conocimientos. Estoy emocionada por seguir creciendo en esta industria y contribuir con mi creatividad y dedicación a proyectos innovadores.",
         tools: "Herramientas",
-        abilities: "Habilidades",
-        desc_abilities: "Programación, diseño de persoanjes, animación 2d y 3D,  ",
         experience: "Experiencia",
         desc_experience: "Actualmente sin experiencia profesional",
+        abilities: "Habilidades",
+        desc_abilities: "Programación, diseño de persoanjes, animación 2d y 3D.",
         studies: "Estudios",
-        desc_studies: "- Tecnica en desarrollo de software en el Sena. / Comunicación y entretenimiento digital en la universidad de Medellín.",
+        desc_studies: "Tecnica en desarrollo de software en el Sena. / Comunicación y entretenimiento digital en la universidad de Medellín.",
         contact_me: "Trabajemos juntos",
         desc_form: "Si estás buscando apoyo de programación o arte 2D y 3D en tu proyecto, no dudes en contactarme. Siempre estoy abierta a explorar nuevas ideas y ver dónde puedo contribuir. Ya sea que estés en las primeras etapas de desarrollo o profundamente en producción, me encantaría conocer más sobre tu proyecto y cómo podría ayudarte.",
+        /*form*/
         name: "Nombre*",
         LastName: "Apellido",
+        error_name: "Ingresa tu nombre",
         email: "Correo electrónico*",
+        error_email: "Ingresa un email válido",
         message: "Mensaje*",
+        error_msg: "El mensaje no puede estar vacío",
         send: "Enviar",
+        formExito: "¡Mensaje enviado! Me pondré en contacto pronto.",
         footer: "© 2026 Isabela — Portafolio universitario",
+        /*art*/
+
+        /*2D*/
+        portfolio: "✦ Portafolio ✦",
+        desc_2d: "Proyectos de animación 2D tanto universitarios como personales",
+        _2D_1: "Todo lo que no dijimos",
+        desc_2d_1: "Animación 2D hecha en After Effects, con personajes y fondos totalmente originales",
+        /*prox*/
+        coming_soon: "Próximamente",
         process: "En desarrollo",
         desc_development: "Este proyecto está en camino. Vuelve pronto para verlo.",
-        see: "Ver proyecto",
-        title_projects: "✦ Portafolio ✦",
-        desc_programming_: "Proyectos de programación universitarios y personales",
-        desc_rem: "Juego 2D plataformero estilo Metroidvania",
+        /*program*/
+        desc_programming: "Proyectos de programación universitarios y personales",
         rem: "R.E.M: Los fragmentos de Milo",
+        desc_rem: "Juego 2D plataformero estilo Metroidvania",
+        see: "Ver proyecto",
         desc_pong: "Recreación del famoso juego PONG como práctica de programación",
-        desc_coming_soon: "Próximamente",
         desc_memories: "Juego realizado en Unity para mi primera Game Jam, con temática de máscaras",
-        desc_animacion2d_: "Animación 2D",
-        desc_animacion3d: "Animación 3D con tematica de E-sports. Personajes y ambiente totalmente propios y originales.",
+        /*3d*/
+        desc_3D: "Proyectos de animación y modelado 3D universitarios y personales",
+        desc_restart: "Animación 3D con tematica de E-sports. Personajes y ambiente totalmente propios y originales.",
         desc_tardis: "Render 3D inspirado en la máquina del tiempo del Doctor Who",
-        desc_jarrones: "Render 3D de práctica haciendo uso de distintas técnicas de texturización",
         jarrones: "Jarrones",
+        desc_jarrones: "Render 3D de práctica haciendo uso de distintas técnicas de texturización",
+        
+        
+        
+        desc_programming_: "Proyectos de programación universitarios y personales",
+        
+        
+        
+        
+        
+        
+        
 
     },
     en: {
