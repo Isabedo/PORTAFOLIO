@@ -20,23 +20,27 @@ const btnJugar = document.getElementById('btnJugar');
 const modalJuego = document.getElementById('modalJuego');
 const cerrarModal = document.getElementById('cerrarModal');
 /*fin juego integrado*/
-/*mapa*/
-const map = L.map('map').setView([6.2351, -75.6018], 16);
-/*fin mapa*/
+
 let currentLanguage = 'es';
 iniciarReloj();
 
 
 /*Lógica para mapa*/
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-}).addTo(map);
+let map;
 
-L.marker([6.2351, -75.6018])
-    .addTo(map)
-    .bindPopup('Universidad de Medellín')
-    .openPopup();
+if (document.getElementById('map')) {
 
+    map = L.map('map').setView([6.2351, -75.6018], 16);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    L.marker([6.2351, -75.6018])
+        .addTo(map)
+        .bindPopup('Universidad de Medellín')
+        .openPopup();
+}
 /*Fin mapa*/
 
 /*logica juego integrado*/
@@ -100,7 +104,7 @@ buttonTheme.forEach(btn => {
         localStorage.setItem('tema', esClaro ? 'light' : 'dark');
 
         // Actualiza el ícono en todos los botones
-        document.querySelectorAll('.change-theme').forEach(b => {
+        buttonTheme.forEach(b => {
             b.querySelector('p').textContent = esClaro ? '☾' : '☼';
         });
     });
@@ -212,52 +216,80 @@ const traducciones = {
 
     },
     en: {
+        /*Menú y home*/
         home: "Home",
         projects: "Projects",
         about: "About Me",
+        services: "Services",
+        play: "Play",
         contact: "Contact Me",
-        abilitie_home_1: "✦ GAME PROGRAMMER ✦",
-        abilitie_home_2: "Concept Art",
+        /*inicio home*/
+        home_h1: "✦ GAME PROGRAMMER ✦",
+        home_h2: "Concept Art",
         desc_home: "I create games and interactive stories — programming the logic, drawing the characters, and animating the worlds that bring them to life.",
         verMas: "See projects",
-        desc_draws: "Characters/Creatures",
-        desc_programming: "Programming",
-        desc_animacion2d_: "2D Animation",
-        desc_animacion3d: "3D Animation",
-        desc_3D_: "University and personal 3D animation and modeling projects",
-        desc_about_me: "I am a 5th semester student of communication and digital entertainment. I am passionate about game development and creating interactive experiences. With skills in programming, concept art, and animation, I strive to create stories that emotionally connect with players and to constantly improve my knowledge. I am excited to continue growing in this industry and contribute with my creativity and dedication to innovative projects.",
+        /*proyectos*/
+        art: "Art",
+        programming: "Programming",
+        animation2d: "2D Animation",
+        animation3d: "3D Animation",
+        /*servicios*/
+        service_1:"I have knowledge in Python, C#, HTML, CSS, JavaScript and graphics engines like unity and Unreal Engine.", 
+        desc_service_1_1: "Game mechanic development.",
+        desc_service_1_2: "Code optimization.",
+        desc_service_1_3: "Development of interactive websites and pages.",
+        service_2: "Design of environments and characters for video games.",
+        desc_service_2_1: "Creation of original characters and creatures.",
+        desc_service_2_2: "Design of scenarios and backgrounds for games.",
+        desc_service_2_3: "Illustrations.",
+        animation2D_3D: "2D and 3D Animation",
+        desc_service_3_1: "Animation of characters and objects for 2D games.",
+        desc_service_3_2: "Creation of cinematics and animated sequences.",
+        desc_service_3_3: "Modeling and 3D Animation",
+        /*about*/
+        desc_about:"I am a 5th semester student of communication and digital entertainment. I am passionate about game development and creating interactive experiences. With skills in programming, concept art, and animation, I strive to create stories that emotionally connect with players and to constantly improve my knowledge. I am excited to continue growing in this industry and contribute with my creativity and dedication to innovative projects.",
         tools: "Tools",
-        abilities: "Abilities",
-        desc_abilities: "Programming, character design, 2D and 3D animation,  ",
         experience: "Experience",
         desc_experience: "Currently without professional experience",
+        abilities: "Abilities",
+        desc_abilities: "Programming, character design, 2D and 3D animation,  ",
         studies: "Studies",
-        desc_studies: " Software development technician at Sena. -Communication and digital entertainment at the University of Medellín.",
-        contact_me: "Let's work together",
+        desc_studies: "Software development technician at Sena. -Communication and digital entertainment at the University of Medellín.",
+        contact_me: "let's work together",
+        desc_form: "If you’re looking for a programmer or a 2D and 3D artist support on your project, feel free to reach out. I’m always open to exploring new ideas and seeing where I can contribute. Whether you're in early development or deep into production, I’d be glad to learn more about your project and how I might be able to help.",
+        /*form*/
         name: "Name*",
         LastName: "Last Name",
+        error_name: "Please enter your name",
         email: "Email*",
+        error_email: "Please enter a valid email",
         message: "Message*",
+        error_msg: "Please enter a message",
         send: "Send",
-        desc_form: "If you’re looking for a programmer or a 2D and 3D artist support on your project, feel free to reach out. I’m always open to exploring new ideas and seeing where I can contribute. Whether you're in early development or deep into production, I’d be glad to learn more about your project and how I might be able to help.",
+        formExito: "Message sent! I will contact you soon.",
         footer: "© 2026 Isabela — University Portfolio",
+        /*2D*/
+        portfolio: "✦ Portfolio ✦",
+        desc_2d: "2D animation projects both university and personal",
+        _2D_1: "All that we didn't say",
+        desc_2d_1: "2D animation made in After Effects, with completely original characters and backgrounds",
+        /*prox*/
+        coming_soon: "Coming soon",
         process: "In development",
-        see: "See project",
         desc_development: "This project is on the way. Check back soon to see it.",
-        title_projects: "✦ Portfolio ✦",
-        desc_programming_: "University and personal programming projects",
-        desc_coming_soon: "Coming soon",
+        /*program*/
+        desc_programming: "University and personal programming projects",
         rem: "R.E.M: The fragments of Milo",
         desc_rem: "2D platformer game in the Metroidvania style",
+        see: "See project",
         desc_pong: "Recreation of the classic PONG game as a programming practice",
         desc_memories: "Game developed in Unity for my first Game Jam, themed around masks",
-        desc_animacion2d: "2D animation made in After Effects, with completely original characters and backgrounds",
-        name_2d: "All that we didn't say",
-        desc_animacion3d: "3D animation with an E-sports theme. Fully original characters and environment.",
+        /*3d*/
+        desc_3D: "University and personal 3D animation and modeling projects",
+        desc_restart: "3D animation with an E-sports theme. Fully original characters and environment.",
         desc_tardis: "3D render inspired by the Doctor Who time machine",
-        desc_jarrones: "3D render using different texturing techniques",
         jarrones: "Vases",
-        desc_2d_: "2D animation projects both university and personal",
+        desc_jarrones: "3D render using different texturing techniques",
 
     }
 };
