@@ -179,7 +179,14 @@ const traducciones = {
         formExito: "¡Mensaje enviado! Me pondré en contacto pronto.",
         footer: "© 2026 Isabela — Portafolio universitario",
         /*art*/
-
+        desc_art: "Proyectos de arte tanto digital como tradicional.",
+        DESC_ART_1: "Boceto e ilustración de personajes propios del corto animado.",
+        tradicional: "Tradicional",
+        desc_art_restart: "Bocetos y diseños para el proyecto RESTART.",
+        angles_demons: "Ángeles y demonios",
+        desc_art_demons: "Boceto e ilustración de personajes que hacen parte de un nuevo proyecto de animación.",
+        desing_character: "Diseño de personajes",
+        desc_art_character:"Bocetos y practica de varios diseños de personajes",
         /*2D*/
         portfolio: "✦ Portafolio ✦",
         desc_2d: "Proyectos de animación 2D tanto universitarios como personales",
@@ -202,18 +209,6 @@ const traducciones = {
         desc_tardis: "Render 3D inspirado en la máquina del tiempo del Doctor Who",
         jarrones: "Jarrones",
         desc_jarrones: "Render 3D de práctica haciendo uso de distintas técnicas de texturización",
-        
-        
-        
-        desc_programming_: "Proyectos de programación universitarios y personales",
-        
-        
-        
-        
-        
-        
-        
-
     },
     en: {
         /*Menú y home*/
@@ -268,6 +263,15 @@ const traducciones = {
         send: "Send",
         formExito: "Message sent! I will contact you soon.",
         footer: "© 2026 Isabela — University Portfolio",
+        /*art*/
+        desc_art: "Projects of both digital and traditional art.",
+        DESC_ART_1: "Sketch and illustration of original characters for the animated short.",
+        tradicional: "Traditional",
+        desc_art_restart: "Sketches and designs for the RESTART project.",
+        angles_demons: "Angles and Demons",
+        desc_art_demons: "Sketch and illustration of characters that are part of a new animation project.",
+        desing_character: "Character Design",
+        desc_art_character:"Sketches and practice of various character designs",
         /*2D*/
         portfolio: "✦ Portfolio ✦",
         desc_2d: "2D animation projects both university and personal",
